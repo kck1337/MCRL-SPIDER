@@ -4,9 +4,3 @@ hexapod_msgs.egg-info/PKG-INFO
 hexapod_msgs.egg-info/SOURCES.txt
 hexapod_msgs.egg-info/dependency_links.txt
 hexapod_msgs.egg-info/top_level.txt
-hexapod_msgs/msg/__init__.py
-hexapod_msgs/msg/_feet_positions.py
-hexapod_msgs/msg/_leg_joints.py
-hexapod_msgs/msg/_legs_joints.py
-hexapod_msgs/msg/_pose.py
-hexapod_msgs/msg/_rpy.py
