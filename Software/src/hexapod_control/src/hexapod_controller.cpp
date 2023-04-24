@@ -28,8 +28,8 @@ using namespace std::chrono_literals;
 
 using std::placeholders::_1;
 
-geometry_msgs::msg::Twist cmd_vel_;
-int command = 0, old_command = 0;
+geometry_msgs::msg::Twist cmd_vel_, cmd_vel2_;
+int command = 0, old_command = 0, count = 0, old_command2 = 0;
 int button_time_old[11] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};   // XBOX controller has 11 buttons
 
 class HexapodController : public rclcpp::Node
@@ -171,10 +171,65 @@ int main(int argc, char ** argv)
         cmd_vel_.angular.z = joy->axes[3];
         // cmd_vel_.angular.y = joy->axes[4];
       }
+
+      RCLCPP_INFO(rclcpp::get_logger("joy_callback"), "I heard: command=[%d, %f, %f]",
+                  command, cmd_vel_.linear.x, cmd_vel_.angular.z);
     };
 
   auto subscription_ = hexa_node->create_subscription<sensor_msgs::msg::Joy>(
     "/joy", 1, joy_callback);
+
+//create a callback lambda function that subscribes to the teleop topic and displays the message
+  auto teleop_callback =
+    [is_rpi](const geometry_msgs::msg::Twist::SharedPtr msg) -> void
+    {
+      RCLCPP_INFO(rclcpp::get_logger("Main"), "I heard: linear=[%f, %f, %f], angular=[%f, %f, %f]",
+                  msg->linear.x, msg->linear.y, msg->linear.z, msg->angular.x, msg->angular.y, msg->angular.z);
+      command = 0;
+      // XBOX one button map, per button debounce required
+        if (msg->linear.x == -2 and msg->angular.z==0){
+          command = 1;  // stand up
+          cmd_vel_.linear.x = 0.0;
+          cmd_vel_.linear.y = 0.;
+        }
+        if (msg->linear.x == 2 and msg->angular.z==0){
+          command = 3;  // walk
+          if (command==old_command){
+            count++;
+          }
+          else{
+            count=1;
+          }
+
+          cmd_vel_.linear.x = 0.5*count;
+          cmd_vel_.linear.y = 0.;
+        }
+        if (msg->linear.x == 0 and msg->angular.z==-2){
+          command = 2;  // sitdown up
+          cmd_vel_.linear.x = 0.;
+          cmd_vel_.linear.y = 0.;
+        }
+        if (msg->linear.x == 0 and msg->angular.z==2){
+          command = 8;  // stand up
+          cmd_vel_.linear.x = 0.;
+          cmd_vel_.linear.y = 0.;
+        }
+
+        if (is_rpi) {
+          cmd_vel_.angular.z = 0.;
+          // cmd_vel_.angular.y = joy->axes[3];
+        } else {
+          cmd_vel_.angular.z = 0.;
+          // cmd_vel_.angular.y = joy->axes[4];
+        }
+        RCLCPP_INFO(rclcpp::get_logger("Main"), "I heard: command=[%d, %f, %f]",
+                  command, cmd_vel_.linear.x, cmd_vel_.angular.z);
+    
+    };
+
+  auto subscription2_ = hexa_node->create_subscription<geometry_msgs::msg::Twist>(
+    "/turtle1/cmd_vel", 1, teleop_callback);
+
 
   spin(hexa_node);
 
