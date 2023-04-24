@@ -45,22 +45,22 @@ public:
     parameterinterface = this->get_node_parameters_interface();
 
     // declare parameters here
-    parameterinterface->declare_parameter("SERVO_NAMES");
-    parameterinterface->declare_parameter("SUB_STEPS");
-    parameterinterface->declare_parameter("LEG_LIFT_HEIGHT");
-    parameterinterface->declare_parameter("INIT_FOOT_POS_X");
-    parameterinterface->declare_parameter("INIT_FOOT_POS_Y");
-    parameterinterface->declare_parameter("INIT_FOOT_POS_Z");
-    parameterinterface->declare_parameter("COXA_TO_CENTER_X");
-    parameterinterface->declare_parameter("COXA_TO_CENTER_Y");
-    parameterinterface->declare_parameter("INIT_COXA_ANGLE");
-    parameterinterface->declare_parameter("COXA_LENGTH");
-    parameterinterface->declare_parameter("FEMUR_LENGTH");
-    parameterinterface->declare_parameter("TIBIA_LENGTH");
-    parameterinterface->declare_parameter("TARSUS_LENGTH");
-    parameterinterface->declare_parameter("LIMIT_COXA");
-    parameterinterface->declare_parameter("LIMIT_FEMUR");
-    parameterinterface->declare_parameter("LIMIT_TIBIA");
+    parameterinterface->declare_parameter("SERVO_NAMES", rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("SUB_STEPS",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("LEG_LIFT_HEIGHT",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("INIT_FOOT_POS_X",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("INIT_FOOT_POS_Y",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("INIT_FOOT_POS_Z",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("COXA_TO_CENTER_X",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("COXA_TO_CENTER_Y",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("INIT_COXA_ANGLE",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("COXA_LENGTH",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("FEMUR_LENGTH",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("TIBIA_LENGTH",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("TARSUS_LENGTH",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("LIMIT_COXA",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("LIMIT_FEMUR",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+    parameterinterface->declare_parameter("LIMIT_TIBIA",rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
     parameterinterface->declare_parameter("NUMBER_OF_LEGS", rclcpp::ParameterValue(3));
 
     // Initilaize Class Objects

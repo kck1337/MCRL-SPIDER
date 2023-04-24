@@ -1,0 +1,52 @@
+[0.025s] Invoking command in '/home/mustafa/Documents/GitHub/MCRL-SPIDER/build/hexapod_description': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/mustafa/Documents/GitHub/MCRL-SPIDER/Software/src/hexapod_description -DCMAKE_INSTALL_PREFIX=/home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description
+[0.230s] -- The C compiler identification is GNU 11.3.0
+[0.385s] -- The CXX compiler identification is GNU 11.3.0
+[0.399s] -- Detecting C compiler ABI info
+[0.487s] -- Detecting C compiler ABI info - done
+[0.498s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.499s] -- Detecting C compile features
+[0.500s] -- Detecting C compile features - done
+[0.506s] -- Detecting CXX compiler ABI info
+[0.610s] -- Detecting CXX compiler ABI info - done
+[0.624s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.625s] -- Detecting CXX compile features
+[0.625s] -- Detecting CXX compile features - done
+[0.631s] -- Found ament_cmake: 1.3.3 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.893s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.6") found components: Interpreter 
+[1.053s] -- Found ament_lint_auto: 0.12.5 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.160s] -- Configuring done
+[1.164s] -- Generating done
+[1.165s] -- Build files have been written to: /home/mustafa/Documents/GitHub/MCRL-SPIDER/build/hexapod_description
+[1.170s] Invoked command in '/home/mustafa/Documents/GitHub/MCRL-SPIDER/build/hexapod_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/mustafa/Documents/GitHub/MCRL-SPIDER/Software/src/hexapod_description -DCMAKE_INSTALL_PREFIX=/home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description
+[1.173s] Invoking command in '/home/mustafa/Documents/GitHub/MCRL-SPIDER/build/hexapod_description': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/mustafa/Documents/GitHub/MCRL-SPIDER/build/hexapod_description -- -j16 -l16
+[1.212s] Invoked command in '/home/mustafa/Documents/GitHub/MCRL-SPIDER/build/hexapod_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/mustafa/Documents/GitHub/MCRL-SPIDER/build/hexapod_description -- -j16 -l16
+[1.268s] Invoking command in '/home/mustafa/Documents/GitHub/MCRL-SPIDER/build/hexapod_description': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/mustafa/Documents/GitHub/MCRL-SPIDER/build/hexapod_description
+[1.279s] -- Install configuration: ""
+[1.280s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/launch
+[1.282s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/launch/display_launch.py
+[1.283s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/meshes
+[1.283s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/meshes/Tibia.dae
+[1.301s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/meshes/Femur.dae
+[1.305s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/meshes/TibiaCol.dae
+[1.306s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/meshes/Coxa.dae
+[1.332s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/meshes/Body.dae
+[1.403s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/rviz
+[1.404s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/rviz/urdf.rviz
+[1.404s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/urdf
+[1.404s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/urdf/hexapod.urdf.xacro
+[1.404s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/ament_index/resource_index/package_run_dependencies/hexapod_description
+[1.404s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/ament_index/resource_index/parent_prefix_path/hexapod_description
+[1.405s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/environment/ament_prefix_path.sh
+[1.405s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/environment/ament_prefix_path.dsv
+[1.406s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/environment/path.sh
+[1.406s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/environment/path.dsv
+[1.406s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/local_setup.bash
+[1.406s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/local_setup.sh
+[1.407s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/local_setup.zsh
+[1.409s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/local_setup.dsv
+[1.409s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/package.dsv
+[1.410s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/ament_index/resource_index/packages/hexapod_description
+[1.411s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/cmake/hexapod_descriptionConfig.cmake
+[1.411s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/cmake/hexapod_descriptionConfig-version.cmake
+[1.412s] -- Installing: /home/mustafa/Documents/GitHub/MCRL-SPIDER/install/hexapod_description/share/hexapod_description/package.xml
+[1.437s] Invoked command in '/home/mustafa/Documents/GitHub/MCRL-SPIDER/build/hexapod_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/mustafa/Documents/GitHub/MCRL-SPIDER/build/hexapod_description

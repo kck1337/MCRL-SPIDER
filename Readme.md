@@ -1,4 +1,4 @@
-<!-- <h1 align="center">Project Leptan: 3D Printed, ROS2 Based Opensource Hexapod Robot</h1>
+<h1 align="center">Project Leptan: 3D Printed, ROS2 Based Opensource Hexapod Robot</h1>
 
 <p align="center">
 
@@ -162,4 +162,4 @@ Please make sure to update tests as appropriate.
 
 ## License
 
-[![Apache v2 License](https://img.shields.io/badge/license-Apache%202-blue)](https://choosealicense.com/licenses/apache-2.0/) -->
+[![Apache v2 License](https://img.shields.io/badge/license-Apache%202-blue)](https://choosealicense.com/licenses/apache-2.0/)

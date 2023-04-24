@@ -95,7 +95,7 @@ void ServoDriver::init(rclcpp::node_interfaces::NodeParametersInterface::SharedP
 
     std::vector<int64_t> temp;
     for (int i = 0; i < servo_count; i++) {
-      param_pointer->declare_parameter(SERVO_NAMES[i]);
+      param_pointer->declare_parameter(SERVO_NAMES[i], rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
       temp = param_pointer->get_parameter(SERVO_NAMES[i]).as_integer_array();
       ID[i] = temp[1];
       TICKS[i] = temp[2];

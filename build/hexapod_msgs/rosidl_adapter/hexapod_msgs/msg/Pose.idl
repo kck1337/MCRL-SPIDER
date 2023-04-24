@@ -1,0 +1,16 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hexapod_msgs/msg/Pose.msg
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Point.idl"
+#include "hexapod_msgs/msg/RPY.idl"
+
+module hexapod_msgs {
+  module msg {
+    struct Pose {
+      geometry_msgs::msg::Point position;
+
+      hexapod_msgs::msg::RPY orientation;
+    };
+  };
+};
