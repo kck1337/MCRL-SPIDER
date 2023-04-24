@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<sdf xmlns:xacro="http://ros.org/wiki/xacro" version="1.5">
+    <world name="default">
+
+        <include>
+            <uri>model://ground_plane</uri>
+        </include>
+
+        <include>
+            <uri>model://sun</uri>
+        </include>
+
+
+        <model name="Leptan">
+
+            <!-- parameters -->
+            <xacro:property name="pi" value="3.1415926535897931" />
+            <xacro:property name="coxa_length" value="0.0675" />
+            <xacro:property name="femur_length" value="0.100" />
+            <xacro:property name="tibia_length" value="0.1618" />
+            <xacro:property name="ground_offset" value="0.18" />
+
+
+            <xacro:macro name="inert" params="mass iner">
+                <inertial>
+                    <pose>0 0 0.0175 0 0 0</pose>
+                    <mass>${mass}</mass>
+                    <inertia>
+                        <ixx>${iner}</ixx>
+                        <ixy>0.0</ixy>
+                        <ixz>0.0</ixz>
+                        <iyy>${iner}</iyy>
+                        <iyz>0.0</iyz>
+                        <izz>${iner}</izz>
+                    </inertia>
+                </inertial>
+            </xacro:macro>
+
+
+            <!-- Body -->
+            <link name="body">
+                <xacro:inert mass="0.1" iner="0.1"/>
+                <collision name="collision">
+                    <pose>0 0 ${ground_offset+0.017-0.021} 0 0 0</pose>
+                    <geometry>
+                        <box>
+                            <size>0.032 0.22 0.042</size>
+                        </box>
+                    </geometry>
+                </collision>
+                <visual name="visual">
+                    <pose>0 0.1 ${ground_offset+0.017} 0 0 0</pose>
+                    <geometry>
+                        <mesh>
+                            <uri>model://Hexa/meshes/Body.stl</uri>
+                            <scale> 0.001 0.001 0.001 </scale>
+                        </mesh>
+                    </geometry>
+                </visual>
+            </link>
+
+
+
+            <!--Leg macro-->
+            <xacro:macro name="leg" params="side position x y angle axis">
+                <link name="coxa_${side}${position}">
+                    <xacro:inert mass="0.1" iner="0.1"/>
+                    <collision name="collision">
+                        <pose>${x} ${y+axis*0.049} ${ground_offset} 0 ${pi/2} ${(1-axis)/2*pi+angle}</pose>
+                        <geometry>
+                            <box>
+                                <size>0.032 0.06 0.042</size>
+                            </box>
+                        </geometry>
+                    </collision>
+                    <visual name="visual">
+                        <pose>${x} ${y+axis*coxa_length} ${ground_offset} 0 ${pi/2} ${(1-axis)/2*pi+angle}</pose>
+                        <geometry>
+                            <mesh>
+                                <uri>model://Hexa/meshes/Coxa.stl</uri>
+                                <scale> 0.001 0.001 0.001 </scale>
+                            </mesh>
+                        </geometry>
+                    </visual>
+                </link>
+
+                <joint name="body_to_coxa_${side}${position}" type="revolute">
+                    <pose>${x} ${y} ${ground_offset} 0 0 0</pose>
+                    <child>coxa_${side}${position}</child>
+                    <parent>body</parent>
+                    <axis>
+                        <limit>
+                            <lower>${-3*pi/4}</lower>
+                            <upper>${3*pi/4}</upper>
+                        </limit>
+                        <xyz>0 0 1</xyz>
+                    </axis>
+                </joint>
+
+                <link name="femur_${side}${position}">
+                    <xacro:inert mass="0.1" iner="0.1"/>
+                    <collision name="collision">
+                        <pose>${x} ${y+axis*(coxa_length+femur_length/2)} ${ground_offset}  ${pi/2} 0 ${axis*pi/2 + angle}</pose>
+                        <geometry>
+                            <box>
+                                <size>0.024 0.025 0.048</size>
+                            </box>
+                        </geometry>
+                    </collision>
+                    <visual name="visual">
+                        <pose>${x-axis*0.024} ${y+axis*(coxa_length+femur_length/2)} ${ground_offset}  ${pi/2} 0 ${axis*pi/2 + angle}</pose>
+                        <geometry>
+                            <mesh>
+                                <uri>model://Hexa/meshes/Femur.stl</uri>
+                                <scale> 0.001 0.001 0.001 </scale>
+                            </mesh>
+                        </geometry>
+                    </visual>
+                </link>
+
+
+                <joint name="coxa_to_femur_${side}${position}" type="revolute">
+                    <pose>${x} ${y+axis*(coxa_length)} ${ground_offset} 0 0 0</pose>
+                    <child>femur_${side}${position}</child>
+                    <parent>coxa_${side}${position}</parent>
+                    <axis>
+                        <limit>
+                            <lower>${-3*pi/4}</lower>
+                            <upper>${3*pi/4}</upper>
+                        </limit>
+                        <xyz>1 0 0</xyz>
+                    </axis>
+                </joint>
+
+
+                <link name="tibia_${side}${position}">
+                    <xacro:inert mass="0.1" iner="0.1"/>
+                    <collision name="collision">
+                        <pose>${x} ${y+axis*(coxa_length+femur_length)} ${ground_offset}  ${pi/2} 0 ${axis*pi/2 + angle}</pose>
+                        <geometry>
+                            <mesh>
+                                <uri>model://Hexa/meshes/TibiaCol.stl</uri>
+                                <scale> 0.001 0.001 0.001 </scale>
+                            </mesh>
+                        </geometry>
+                    </collision>
+                    <visual name="visual">
+                        <pose>${x} ${y+axis*(coxa_length+femur_length)} ${ground_offset}  ${pi/2} 0 ${axis*pi/2 + angle}</pose>
+                        <geometry>
+                            <mesh>
+                                <uri>model://Hexa/meshes/Tibia.stl</uri>
+                                <scale> 0.001 0.001 0.001 </scale>
+                            </mesh>
+                        </geometry>
+                    </visual>
+                </link>
+
+                <joint name="femur_to_tibia_${side}${position}" type="revolute">
+                    <pose>${x} ${y+axis*(coxa_length+femur_length)} ${ground_offset} 0 0 0</pose>
+                    <child>tibia_${side}${position}</child>
+                    <parent>femur_${side}${position}</parent>
+                    <axis>
+                        <limit>
+                            <lower>${-3*pi/4}</lower>
+                            <upper>${3*pi/4}</upper>
+                        </limit>
+                        <xyz>1 0 0</xyz>
+                    </axis>
+                </joint>
+
+            </xacro:macro>
+
+            <xacro:leg side="L" position="F" x="0.125"   y="0.065"    angle="0" axis="1" />
+            <xacro:leg side="L" position="M" x="0.0"    y="0.1"       angle="0" axis="1" />
+            <xacro:leg side="L" position="R" x="-0.125"  y="0.065"    angle="0" axis="1" />
+            <xacro:leg side="R" position="F" x="0.125"   y="-0.065"   angle="0" axis="-1" />
+            <xacro:leg side="R" position="M" x="0.0"    y="-0.1"      angle="0" axis="-1" />
+            <xacro:leg side="R" position="R" x="-0.125"  y="-0.065"   angle="0" axis="-1" />
+
+            <static>false</static>
+
+        </model>
+    </world>
+</sdf>
+
