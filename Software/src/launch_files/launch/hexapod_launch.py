@@ -45,7 +45,7 @@ def generate_launch_description():
 
     joy_dev = launch.substitutions.LaunchConfiguration('joy_dev')
     pkg_share = launch_ros.substitutions.FindPackageShare(
-        package='hexapod_description').find('hexapod_description')
+        package='hexapod_description_mk2').find('hexapod_description_mk2')
     default_model_path = os.path.join(pkg_share, 'urdf/hexapod.urdf.xacro')
     default_rviz_config_path = os.path.join(pkg_share, 'rviz/urdf.rviz')
 
@@ -91,6 +91,8 @@ def generate_launch_description():
         arguments=arguments1,
         parameters=[config]
     )
+
+    # print("ran hexa_node", config)
 
     return_list = [
         launch.actions.DeclareLaunchArgument('joy_dev', default_value=input_device),

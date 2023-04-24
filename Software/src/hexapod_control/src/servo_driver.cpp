@@ -63,6 +63,7 @@ void ServoDriver::init(rclcpp::node_interfaces::NodeParametersInterface::SharedP
     }
   } else {
     // Open port
+    RCLCPP_INFO(logger, "Parameter pointer is not Null");
     if (portHandler->openPort()) {
       RCLCPP_INFO(logger, "Succeeded to open the port!");
       // Set port baudrate
@@ -79,6 +80,10 @@ void ServoDriver::init(rclcpp::node_interfaces::NodeParametersInterface::SharedP
 
     // Load the parameters from the YAML file
     SERVO_NAMES = param_pointer->get_parameter("SERVO_NAMES").as_string_array();
+    // print servo names
+    for (int i = 0; i < 18; i++) {
+      RCLCPP_INFO(logger, "SERVO_NAMES: %s", SERVO_NAMES[i].c_str());
+    }
     servo_count = end(SERVO_NAMES) - begin(SERVO_NAMES);
 
     ID.resize(servo_count);
@@ -95,7 +100,7 @@ void ServoDriver::init(rclcpp::node_interfaces::NodeParametersInterface::SharedP
 
     std::vector<int64_t> temp;
     for (int i = 0; i < servo_count; i++) {
-      param_pointer->declare_parameter(SERVO_NAMES[i], rclcpp::ParameterValue(), rcl_interfaces::msg::ParameterDescriptor());
+      param_pointer->declare_parameter(SERVO_NAMES[i], rclcpp::ParameterValue(std::vector<int64_t>()));
       temp = param_pointer->get_parameter(SERVO_NAMES[i]).as_integer_array();
       ID[i] = temp[1];
       TICKS[i] = temp[2];
@@ -349,3 +354,4 @@ void ServoDriver::transmit_servo_positions(const sensor_msgs::msg::JointState & 
   }
   groupSyncWrite.clearParam();
 }
+
