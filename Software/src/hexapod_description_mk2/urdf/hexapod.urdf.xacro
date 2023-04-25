@@ -83,7 +83,7 @@
     <!--Tibia-->
     <link name="tibia_link_${side}${position}">
       <collision name="collision">
-        <origin rpy="0 ${pi} ${pi/2}" xyz="0 0 -0.0145"/>
+        <origin rpy="0 ${pi} ${pi/2}" xyz="0 0 0"/>
         <!--<origin rpy="${pi} ${-pi/2} 0" xyz="0 0 0"/>-->
         <geometry>
           <mesh filename="package://hexapod_description_mk2/meshes/TibiaCol.dae"/>
@@ -91,7 +91,7 @@
       </collision>
       <visual name="visual">
         <!--<origin rpy="${pi} ${-pi/2} 0" xyz="0 0 0"/>-->
-        <origin rpy="0 ${pi} ${pi/2}" xyz="0 0 -0.0145"/>
+        <origin rpy="0 ${pi} ${pi/2}" xyz="0 0 0"/>
         <geometry>
           <mesh filename="package://hexapod_description_mk2/meshes/Tibia.dae"/>
         </geometry>
@@ -99,7 +99,7 @@
     </link>
 
     <joint name="TIBIA_${side}${position}" type="revolute">
-      <origin rpy="0 0 0" xyz="0 ${femur_length} 0"/>
+      <origin rpy="0 0 0" xyz="0 ${femur_length} -0.0145"/>
       <child link="tibia_link_${side}${position}"/>
       <parent link="femur_link_${side}${position}"/>
       <axis xyz="1 0 0"/>
