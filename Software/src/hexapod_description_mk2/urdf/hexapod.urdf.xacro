@@ -6,7 +6,7 @@
   <xacro:property name="coxa_length" value="0.052" />
   <xacro:property name="femur_length" value="0.0645" />
   <xacro:property name="tibia_length" value="0.133" />
-  <xacro:property name="ground_offset" value="0.18" />
+  <xacro:property name="ground_offset" value="0.10" />
   <xacro:property name="offset_y_f" value="0.06091" />
   <xacro:property name="offset_y_r" value="0.06091" />
   <xacro:property name="offset_y1" value="0.1035" />
@@ -31,7 +31,7 @@
       <geometry>
         <mesh filename="package://hexapod_description_mk2/meshes/Body.dae"/>
       </geometry>
-      <origin rpy="0 0 ${pi/2}" xyz="0.006985 0.0 ${ground_offset}"/>
+      <origin rpy="${pi} 0 ${3*pi/2}" xyz="0.006985 0.0 ${ground_offset}"/>
     </visual>
   </link>
 
@@ -44,14 +44,14 @@
           <mesh filename="package://hexapod_description_mk2/meshes/Coxa.dae"/>
         </geometry>
         <!--<origin rpy="0 ${pi/2} ${(1-axis)/2*pi}" xyz="0 ${axis*coxa_length} 0.024"/>-->
-        <origin rpy="0 ${pi/2} ${(2-axis)/2*pi}" xyz="0 0.0 0.0014"/>
+        <origin rpy="0 ${pi/2} ${(2-axis)/2*pi}" xyz="0 0.0 0.0"/>
       </visual>
     </link>
 
     <joint name="COXA_${side}${position}" type="revolute">
       <child link="coxa_link_${side}${position}"/>
       <parent link="base_link"/>
-      <origin rpy="0 0 ${angle}" xyz="${x} ${y} 0.194 "/>
+      <origin rpy="0 0 ${angle}" xyz="${x} ${y} ${ground_offset-0.015}"/>
       <axis xyz="0 0 ${-axis}"/>
       <limit effort="1000.0" lower="${-pi/2}" upper="${pi/2}" velocity="0.5"/>
     </joint>
