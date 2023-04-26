@@ -163,3 +163,6 @@ Please make sure to update tests as appropriate.
 ## License
 
 [![Apache v2 License](https://img.shields.io/badge/license-Apache%202-blue)](https://choosealicense.com/licenses/apache-2.0/) -->
+
+
+Get CAD files at: https://cad.onshape.com/documents?nodeId=25a5f9b1802f93109a0dcab3&resourceType=folder
